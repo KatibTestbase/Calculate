@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แปลงหน่วยพื้นที่ดิน</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-group input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result-group {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+
+        .result-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .result-group input {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+        }
+    </style>
+    <script language="JavaScript">  
+        function temp5(form)  
+        {  
+            var T = parseFloat(form.SideA.value);  
+            
+            var Tt = T/1000000;
+            var Raii = 0;
+            var Ngann = 0;
+            var Ngann1 = 0;
+            var Waa = 0;
+            var R = 0;
+            var Ac = 0;
+            var Hec = 0;
+        
+            R = T/4;
+            Ac = T/4050;
+            Hec = T/10000;
+            Raii = Math.floor(R/400);
+            Ngann1 = R-(Raii*400);
+            Ngann = Math.floor(Ngann1/100);
+            Waa = R-(Raii*400)-(Ngann*100);
+            form.SqKM.value = Tt.toFixed(5);
+            form.Rai.value = Raii;  
+            form.Ngan.value = Ngann;
+            form.Wa.value = Waa.toFixed(3);
+            form.Twa.value = R.toFixed(3);
+            form.Acre1.value = Ac.toFixed(2);
+            form.Hectare1.value = Hec.toFixed(2);
+        }  
+    </script>  
+</head>
+<body>
+
+    <div class="container">
+        <h2>แปลงหน่วยพื้นที่ดิน</h2>
+
+        <form>
+            <div class="form-group">
+                <label for="SideA">ใส่จำนวนพื้นที่ต้องการหา (ตร.เมตร):</label>
+                <input type="text" name="SideA" id="SideA" value="0" maxlength="15" />
+            </div>
+
+            <div class="form-group">
+                <input name="calc" onclick="temp5(this.form)" type="button" value="คำนวณค่า" />
+            </div>
+
+            <div class="result-group">
+                <label for="Rai">จำนวนไร่:</label>
+                <input name="Rai" id="Rai" readonly="readonly" />
+
+                <label for="Ngan">จำนวนงาน:</label>
+                <input name="Ngan" id="Ngan" readonly="readonly" />
+
+                <label for="Wa">จำนวนตารางวา:</label>
+                <input name="Wa" id="Wa" readonly="readonly" /><br/>
+            <div><CENTER label for="Wa"></label> -----------------------------------------------------------</label /CENTER></div> 
+                <label for="Twa">พื้นที่ตารางวา:</label>
+                <input name="Twa" id="Twa" readonly="readonly" />
+
+                <label for="SqKM">พื้นที่ ตร.กม.:</label>
+                <input name="SqKM" id="SqKM" readonly="readonly" />
+
+                <label for="Acre1">พื้นที่เอเคอร์:</label>
+                <input name="Acre1" id="Acre1" readonly="readonly" />
+
+                <label for="Hectare1">พื้นที่เฮกเตอร์:</label>
+                <input name="Hectare1" id="Hectare1" readonly="readonly" />
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
